@@ -20,7 +20,7 @@ const Profile = () => {
   const [imageFile, setImageFile] = useState(null);
   const [uploadLoading, setUploadLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('personal');
-  
+  console.log('Profile component rendered with user:', user, 'profile:', profile);
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
@@ -191,9 +191,10 @@ const handleImageUpload = async () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-1">
+              {!user?.role === 'admin' &&(
           <Card title="Profile Picture" titleIcon={<FaUser className="mr-2 text-blue-500" />}>
             <div className="flex flex-col items-center">
-              <div className="w-32 h-32 mb-4 relative">
+                <div className="w-32 h-32 mb-4 relative">
                 <img
                   className="h-32 w-32 rounded-full object-cover border-4 border-white shadow"
                   src={imagePreview || profile?.profile_image || 'https://via.placeholder.com/128'}
@@ -236,6 +237,7 @@ const handleImageUpload = async () => {
               </div>
             </div>
           </Card>
+              ) }
           
           <Card title="Account Information" titleIcon={<FaIdCard className="mr-2 text-blue-500" />} className="mt-6">
             <div className="space-y-3">

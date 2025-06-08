@@ -3,8 +3,8 @@ const { pool } = require('../config/database');
 
 async function createAdminUser() {
   try {
-    const email = 'admin@sponsor-child-bridge.com';
-    const password = 'Admin123!';
+    const email = 'admin@gmail.com';
+    const password = 'admin123';
     const firstName = 'System';
     const lastName = 'Administrator';
     const role = 'admin';
